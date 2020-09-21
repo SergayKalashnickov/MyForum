@@ -19,15 +19,30 @@ public class BlogController {
     @Autowired
     private PostRepository postRepository;
 
-    @GetMapping("/blog")
+    @GetMapping({"/", "/blog"})
     public String blog(Model model){
         Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
         return "blog";
     }
 
+    @GetMapping("/login")
+    public String login(Model model){
+        return "login";
+    }
+    @GetMapping("/login/registr")
+        public String registr(Model model){
+       // model.addAttribute("userForm", new User());
+        return "regist";
+    }
+
+    @GetMapping("/homes")
+    public String homes(Model model){
+        return "blog";
+    }
+
     @GetMapping("/blog/add")
-    public String addArticle(Model moderl){
+    public String addArticle(Model model){
         return "blog-add";
     }
 

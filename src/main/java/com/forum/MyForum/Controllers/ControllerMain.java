@@ -15,11 +15,11 @@ public class ControllerMain {
         model.addAttribute("name", name);
         return "greeting";
     }
-    @GetMapping("/home")
+/*    @GetMapping("/home")
     public String home( Model model) {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         model.addAttribute("localTime", sdf.format(cal.getTime()));
         return "home";
-    }
+    }*/
 }
