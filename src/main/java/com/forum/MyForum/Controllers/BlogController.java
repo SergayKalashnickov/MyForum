@@ -1,7 +1,7 @@
 package com.forum.MyForum.Controllers;
 
 import com.forum.MyForum.models.Post;
-import com.forum.MyForum.repo.PostRepository;
+import com.forum.MyForum.repo.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,27 +17,12 @@ import java.util.Optional;
 public class BlogController {
 
     @Autowired
-    private PostRepository postRepository;
+    private PostRepo postRepository;
 
     @GetMapping({"/", "/blog"})
     public String blog(Model model){
         Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
-        return "blog";
-    }
-
-    @GetMapping("/login")
-    public String login(Model model){
-        return "login";
-    }
-    @GetMapping("/login/registr")
-        public String registr(Model model){
-       // model.addAttribute("userForm", new User());
-        return "regist";
-    }
-
-    @GetMapping("/homes")
-    public String homes(Model model){
         return "blog";
     }
 

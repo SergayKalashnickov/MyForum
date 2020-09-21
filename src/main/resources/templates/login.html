@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8">
-    <title>Add artical</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Spring Security Example </title>
 </head>
 <body>
-<header th:insert="Conteners/Header :: header"></header>
-<div class="container mt-5 mb-5">
-    <h1>Добавитие статьи</h1>
-    <form action="/blog/add" method="post">
-        <input type="text" name="name" placeholder="Name" class="form-control"><br>
-        <input type="password" name="password" placeholder="Password" class="form-control"><br>
-        <input type="email" name="email" placeholder="e-mail" class="form-control"><br>
-        <button type="submit" class="btn btn-success">Добавить статью</button>
-    </form>
+<div th:if="${param.error}">
+    Invalid username and password.
 </div>
-<footer th:insert="Conteners/footer :: footer"></footer>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/login}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
 </body>
 </html>
